@@ -44,7 +44,8 @@ class Confession extends React.Component {
             </div>
             <div style={{width: "800px", margin: "10px auto"}}>
               <img style={{width: "100%"}} alt="example"
-                   src="https://b-ssl.duitang.com/uploads/item/201801/15/20180115155640_XsY8k.jpeg"
+                   // src="https://b-ssl.duitang.com/uploads/item/201801/15/20180115155640_XsY8k.jpeg"
+                   src={require('../../../assets/20180115155640_XsY8k.jpeg')}
               />
             </div>
           </Col>
