@@ -1,8 +1,10 @@
-import { PAGE_SIZE } from '../constants';
+import {PAGE_SIZE} from '../constants';
 import request from '../../../utils/user';
 import config from "../config.js"
-const { api } = config
-export function fetch({ page = 1 }) {
+
+const {api} = config
+
+export function fetch({page = 1}) {
   return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
 }
 

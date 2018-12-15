@@ -6,13 +6,14 @@ import MyFooter from "./MyFooter";
 import MyImg from "./MyImg";
 
 class Confession extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       editorHtml: '',
       editorText: '',
     }
   }
+
   createHandler(values) {
     this.props.dispatch({
       type: 'confession/create',
@@ -37,13 +38,14 @@ class Confession extends React.Component {
           <Col span={4}>
           </Col>
           <Col span={16}>
-            <div style={{width:200,margin:"20px auto"}}>
-              <h1  style={{color:"#343653"}}>效果图如下：</h1>
+            <div style={{width: 200, margin: "20px auto"}}>
+              <h1 style={{color: "#343653"}}>效果图如下：</h1>
 
             </div>
-            <div style={{width:"800px",margin:"10px auto"}}>
-                <img style={{width:"100%"}}  alt="example" src="https://b-ssl.duitang.com/uploads/item/201801/15/20180115155640_XsY8k.jpeg"
-                />
+            <div style={{width: "800px", margin: "10px auto"}}>
+              <img style={{width: "100%"}} alt="example"
+                   src="https://b-ssl.duitang.com/uploads/item/201801/15/20180115155640_XsY8k.jpeg"
+              />
             </div>
           </Col>
           <Col span={4}></Col>

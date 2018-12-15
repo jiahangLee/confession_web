@@ -1,8 +1,10 @@
 import {
-  Form, Input, DatePicker, Col, TimePicker, Select, Cascader, InputNumber,Modal} from 'antd';
+  Form, Input, DatePicker, Col, TimePicker, Select, Cascader, InputNumber, Modal
+} from 'antd';
 import React from "react"
-import { connect } from 'dva'
-const { TextArea } = Input;
+import {connect} from 'dva'
+
+const {TextArea} = Input;
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -17,6 +19,7 @@ const formItemLayout = {
     sm: {span: 12},
   },
 };
+
 class ConfessionForm extends React.Component {
 
   constructor(props) {
@@ -25,6 +28,7 @@ class ConfessionForm extends React.Component {
       visible: false,
     };
   }
+
   showModelHandler = (e) => {
     if (e) e.stopPropagation();
     this.setState({
@@ -39,7 +43,7 @@ class ConfessionForm extends React.Component {
   };
 
   okHandler = () => {
-    const { onOk } = this.props;
+    const {onOk} = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         onOk(values);
@@ -47,11 +51,12 @@ class ConfessionForm extends React.Component {
       }
     });
   };
+
   render() {
-    const { children } = this.props;
-    const { getFieldDecorator} = this.props.form;
+    const {children} = this.props;
+    const {getFieldDecorator} = this.props.form;
     const config = {
-      rules: [{ type: 'object', required: true, message: '选择你们的日期!' }],
+      rules: [{type: 'object', required: true, message: '选择你们的日期!'}],
     };
     return (
       <span>
@@ -73,7 +78,7 @@ class ConfessionForm extends React.Component {
                 required: true,
               },
             ],
-          })(<Input  placeholder="Ta的名字" />)}
+          })(<Input placeholder="Ta的名字"/>)}
         </FormItem>
 
         <FormItem
@@ -87,7 +92,7 @@ class ConfessionForm extends React.Component {
                 required: true,
               },
             ],
-          })( <DatePicker style={{width: '100%'}}/>)}
+          })(<DatePicker style={{width: '100%'}}/>)}
         </FormItem>
         <FormItem {...formItemLayout} hasFeedback label="想说的话">
           {getFieldDecorator('detail', {
