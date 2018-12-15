@@ -22,6 +22,7 @@ class Confession extends React.Component {
   }
 
   render() {
+    const QRCode = require('qrcode-react');
     const {
       Header, Footer, Sider, Content,
     } = Layout;
@@ -60,7 +61,21 @@ class Confession extends React.Component {
               </ConfessionForm>
             </div>
             <div style={{height: "250px"}}>
-              <h3>获取你的表白二维码：{url}</h3>
+
+              {console.log(url)}
+              {
+                  url===null?
+                  <div>
+                    <h3>这是实例二维码：{url}</h3>
+                    <QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>
+                  </div>
+                  :
+                  <div>
+                    <h3>这是你的二维码：{url}</h3>
+                    <QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>
+                  </div>
+              }
+              {/*{url}?return(<QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>):<QRCode value="http://facebook.github.io/react/"/>*/}
             </div>
           </Col>
           <Col span={4}></Col>

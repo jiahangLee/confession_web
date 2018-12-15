@@ -8,8 +8,12 @@
   },
   "dependencies": {
     "dva": "^2.4.0",
-    "umi": "^1.0.0",
+    "jsbarcode": "^3.11.0",
     "mockjs": "^1.0.1-beta3",
+    "qr-image": "^3.2.0",
+    "qrcode-react": "^0.1.16",
+    "svgpath": "^2.2.1",
+    "umi": "^1.0.0",
     "umi-plugin-dva": "^0.7.1"
   },
   "devDependencies": {
