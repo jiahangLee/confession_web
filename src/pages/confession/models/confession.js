@@ -6,10 +6,11 @@ export default {
     list: [],
     total: null,
     page: null,
+    loveUrl:null,
   },
   reducers: {
-    save(state, { payload: { data: list, total, page } }) {
-      return { ...state, list, total, page };
+    save(state, { payload: { loveUrl } }) {
+      return { ...state, loveUrl };
     },
   },
   effects: {
@@ -34,16 +35,22 @@ export default {
       const page = yield select(state => state.users.page);
       yield put({ type: 'fetch', payload: { page } });
     },
-    *create({ payload: values }, { call, put, select }) {
-      yield call(usersService.create, values);
-      const page = yield select(state => state.users.page);
-      yield put({ type: 'fetch', payload: { page } });
+    *create({ payload: values }, { call, put }) {
+      console.log(values)
+      const {data} = yield call(usersService.create, values);
+      console.log(data)
+      yield put({
+        type: 'save',
+        payload: {
+          loveUrl:data.loveUrl
+        },
+      });
     },
   },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        if (pathname === '/users') {
+        if (pathname === '/lo') {
           dispatch({ type: 'fetch', payload: query });
         }
       });

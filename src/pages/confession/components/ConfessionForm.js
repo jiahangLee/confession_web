@@ -67,7 +67,7 @@ class ConfessionForm extends React.Component {
       <Form>
 
         <FormItem {...formItemLayout} hasFeedback label="Ta的姓名">
-          {getFieldDecorator('username', {
+          {getFieldDecorator('name', {
             rules: [
               {
                 required: true,
@@ -81,7 +81,7 @@ class ConfessionForm extends React.Component {
           label="选择日期"
           hasFeedback
         >
-          {getFieldDecorator('date-picker', config, {
+          {getFieldDecorator('loveTime', config, {
             rules: [
               {
                 required: true,
@@ -90,7 +90,7 @@ class ConfessionForm extends React.Component {
           })( <DatePicker style={{width: '100%'}}/>)}
         </FormItem>
         <FormItem {...formItemLayout} hasFeedback label="想说的话">
-          {getFieldDecorator('password', {
+          {getFieldDecorator('detail', {
             rules: [
               {
                 required: true,
@@ -107,4 +107,4 @@ class ConfessionForm extends React.Component {
   }
 }
 
-export default connect(({ loading }) => ({ loading }))(Form.create()(ConfessionForm));
+export default Form.create()(ConfessionForm);

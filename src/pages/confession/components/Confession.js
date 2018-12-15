@@ -1,36 +1,86 @@
 import React from "react"
-import {Button} from "antd"
+import {Button, Row, Col, Layout, Carousel} from "antd"
 import {connect} from "dva";
 import ConfessionForm from "./ConfessionForm";
-import styles from "../../users/components/Users.css";
+import MyFooter from "./MyFooter";
+import MyImg from "./MyImg";
 
-class Confession extends React.Component{
+class Confession extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      editorHtml: '',
+      editorText: '',
+    }
+  }
   createHandler(values) {
-  this.props.dispatch({
-    type: 'users/create',
-    payload: values,
-  });
-}
-  render(){
-    return(
-        <div>
-          <div className={styles.create}>
-            <ConfessionForm record={{}} onOk={this.createHandler}>
-              <Button type="primary">这是一个神奇的开始，你可以通过它来表白你喜欢的人！</Button>
-            </ConfessionForm>
-          </div>
-          <div className={styles.create}>
-            <h3>这是你的表白二维码：。。。</h3>
-          </div>
+    this.props.dispatch({
+      type: 'confession/create',
+      payload: values,
+    });
+  }
+
+  render() {
+    const {
+      Header, Footer, Sider, Content,
+    } = Layout;
+    // const DemoBox = props => <p className={`height-${props.value}`}>{props.children}</p>;
+    const url = this.props.loveUrl
+    return (
+      <div style={{height: "100%", backgroundColor: "#ccc"}}>
+        <Row>
+          <Col span={24}>
+            <Header><h1 style={{color: "#fff"}}>木之本樱</h1></Header>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={4}>
+          </Col>
+          <Col span={16}>
+            <div style={{width:200,margin:"20px auto"}}>
+              <h1  style={{color:"#343653"}}>效果图如下：</h1>
+
+            </div>
+            <div style={{width:"800px",margin:"10px auto"}}>
+                <img style={{width:"100%"}}  alt="example" src="https://b-ssl.duitang.com/uploads/item/201801/15/20180115155640_XsY8k.jpeg"
+                />
+            </div>
+          </Col>
+          <Col span={4}></Col>
+        </Row>
+        <Row>
+          <Col span={4}></Col>
+          <Col span={16}>
+            <div>
+              <ConfessionForm record={{}} onOk={this.createHandler.bind(this)}>
+                <Button style={{width: "100%"}} type="primary">开始制作！</Button>
+              </ConfessionForm>
+            </div>
+            <div style={{height: "250px"}}>
+              <h3>获取你的表白二维码：{url}</h3>
+            </div>
+          </Col>
+          <Col span={4}></Col>
+        </Row>
+
+        <Row>
+          <Col span={4}></Col>
+          <Col span={16}>
+            <MyFooter style={{marginButton: "0px", height: 60}}/>
+          </Col>
+          <Col span={4}></Col>
+        </Row>
+
       </div>
     )
   }
 }
+
 function mapStateToProps(state) {
-  const { loveUrl } = state.confession;
+  const {loveUrl} = state.confession;
   return {
-    loveUrl,
-    loading: state.loading.models.confession,
+    loveUrl
   };
 }
+
 export default connect(mapStateToProps)(Confession);
