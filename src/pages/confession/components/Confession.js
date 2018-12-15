@@ -62,11 +62,12 @@ class Confession extends React.Component {
             </div>
             <div style={{height: "250px"}}>
 
-              {console.log(url)}
+              {console.log(null?"true":"false")}
               {
+                //这里不能直接写url?,他可能只是value属性为null
                   url===null?
                   <div>
-                    <h3>这是实例二维码：{url}</h3>
+                    <h3>这是示例二维码：{url}</h3>
                     <QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>
                   </div>
                   :
