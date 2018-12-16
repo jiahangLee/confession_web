@@ -48,7 +48,7 @@ class $mylove$ extends React.Component {
       console.log("是ios的")
       i = i?i.replace(/\T/g," "):i
       i = i?i.replace(/(.*):{1}(.*)/, '$1'):i
-      date1 = i?new Date("2018-12-03 08:30".replace(/-/g, "/")):new Date()
+      date1 = i?new Date(i.replace(/-/g, "/")):new Date()
       date2 = this.state.time
     }else {
       console.log("不是ios的")
@@ -82,9 +82,9 @@ class $mylove$ extends React.Component {
         {/*<h1>loveyou=>{p}</h1>*/}
         {/*<h1>{api.createConfession + "/" + p}</h1>*/}
         {/*<h1>{JSON.stringify(this.props.list)}</h1>*/}
-        <h1>love you=>{this.props.list.name}</h1>
-        <h1>say to you=>{this.props.list.detail}</h1>
-        <h1>together time=>{time}</h1>
+        <h3>love💘you=>{this.props.list.name}</h3>
+        <h3>say to you=>{this.props.list.detail}</h3>
+        <h3>together time=>{time}</h3>
         {/*<h1>together=>{new Date(this.props.list.loveTime).getDate()}</h1>*/}
         {/*<h1>now=>{new Date().getDate()}</h1>*/}
 
