@@ -3,8 +3,8 @@ import {Button, Row, Col, Layout, Carousel} from "antd"
 import {connect} from "dva";
 import ConfessionForm from "./ConfessionForm";
 import MyFooter from "./MyFooter";
-import MyImg from "./MyImg";
-
+import config from "../config.js"
+const {api} = config
 class Confession extends React.Component {
   constructor() {
     super()
@@ -72,8 +72,9 @@ class Confession extends React.Component {
                   </div>
                   :
                   <div>
+                    {console.log(api.loveUrl+url.replace(/(.*)\/{1}(.*)/, '$2'))}
                     <h3>这是你的二维码：{url}</h3>
-                    <QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>
+                    <QRCode value={api.loveUrl+url.replace(/(.*)\/{1}(.*)/, '$2')}/>
                   </div>
               }
               {/*{url}?return(<QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>):<QRCode value="http://facebook.github.io/react/"/>*/}
