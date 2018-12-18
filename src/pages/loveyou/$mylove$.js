@@ -87,7 +87,7 @@ class $mylove$ extends React.Component {
         <h3>together time=>{time}</h3>
         {/*<h1>together=>{new Date(this.props.list.loveTime).getDate()}</h1>*/}
         {/*<h1>now=>{new Date().getDate()}</h1>*/}
-
+<Comment/>
       </div>
 
     )

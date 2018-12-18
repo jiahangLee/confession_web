@@ -8,7 +8,6 @@ const Canvas = styled.canvas`
   background: lightGray;
   display: block;
 `;
-
 const color1 = `#00b7ffcc`;
 const color2 = 'red';
 const Actions = [
@@ -188,9 +187,9 @@ class App extends Component {
 
   initCanvas = (c) => {
     this.canvas = c;
-    this.canvas.width = document.documentElement.clientWidth ;
-    this.canvas.height = document.documentElement.clientHeight ;
-    this.center = { x: document.documentElement.clientWidth/2 , y: document.documentElement.clientHeight/2  };
+    this.canvas.width = c.clientWidth;
+    this.canvas.height = c.clientHeight;
+    this.center = { x: c.clientWidth / 2, y: c.clientHeight / 2 };
   }
 
   render() {
@@ -201,3 +200,4 @@ class App extends Component {
 }
 
 export default App;
+
