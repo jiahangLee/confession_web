@@ -58,7 +58,7 @@ class Confession extends React.Component {
                   >
                     <h2 style={{textAlign: "center"}}>示例二维码:</h2>
                     <div style={{display: "flex", justifyContent: "center"}}>
-                      <QRCode value="http://www.jiahanglee.club:8080/xiaoying.html"/>
+                      <QRCode value="http://www.jiahanglee.com/#/loveyou/1"/>
                     </div>
                     <h2 style={{textAlign: "center",marginTop:20}}>截图二维码送给TA:</h2>
                   </div>
@@ -81,10 +81,10 @@ class Confession extends React.Component {
           <Col span={16}>
             <div>
               <ConfessionForm record={{}} onOk={this.createHandler.bind(this)}>
-                <Button style={{width: "100%"}} type="primary">开始制作！</Button>
+                <Button style={{width: "100%",marginTop:50}} type="primary">开始制作！</Button>
               </ConfessionForm>
             </div>
-            <div style={{height: "250px"}}>
+            <div style={{height: "70px"}}>
 
               {console.log(null ? "true" : "false")}
 
