@@ -1,5 +1,8 @@
+//速度每一帧加速度减少的加速运动
 const SPRING = 0.01;
-const FRICTION = 0.9;
+//摩擦力每帧减速
+const FRICTION = 0.1;
+//每一帧实际要走多少
 const FOCUS_POSITION = 300;
 
 class PARTICLE {
@@ -42,8 +45,8 @@ class PARTICLE {
     // 3D 坐标下的 2D 偏移，暂且只考虑位置，不考虑大小变化
     const scale = FOCUS_POSITION / (FOCUS_POSITION + this.z);
     return {
-      x: this.center.x + (this.x * scale),
-      y: this.center.y - (this.y * scale),
+      x: this.center.x + (this.x * 20),
+      y: this.center.y - (this.y * 20),
     };
   }
 }

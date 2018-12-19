@@ -11,27 +11,29 @@ const Canvas = styled.canvas`
 
 const color1 = `#00b7ffcc`;
 const color2 = 'red';
-const Actions = [
-  { lifeTime: 60, texts: [{ text: 3, color: color1 }] },
-  { lifeTime: 60, texts: [{ text: 2, color: color1 }] },
-  { lifeTime: 60, texts: [{ text: 1, color: color1 }] },
-  {
-    lifeTime: 120,
-    texts: [
-      { text: 'I', color: color1 },
-      { text: '❤', color: color2 },
-      { text: 'Y', color: color1 },
-      { text: 'O', color: color1 },
-      { text: 'U', color: color1 }
-    ]
-  },
-];
+
 class App extends Component {
+
   constructor() {
     super();
     this.tick = 0;
     this.actionsIndex = 0;
     this.geometrys = [];
+    this.Actions = [
+      { lifeTime: 30, texts: [{ text: 3, color: color1 }] },
+      { lifeTime: 60, texts: [{ text: 2, color: color1 }] },
+      { lifeTime: 60, texts: [{ text: 1, color: color1 }] },
+      {
+        lifeTime: 120,
+        texts: [
+          { text: 'I', color: color1 },
+          { text: '❤', color: color2 },
+          { text: 'Y', color: color1 },
+          { text: 'O', color: color1 },
+          { text: 'U', color: color1 },
+        ]
+      },
+    ];
   }
 
   componentDidMount() {
@@ -57,7 +59,7 @@ class App extends Component {
     const offscreenCanvasCtx = offscreenCanvas.getContext('2d');
     const width = offscreenCanvas.width;
     const height = offscreenCanvas.height;
-    Actions.forEach(({ texts }) => {
+    this.Actions.forEach(({ texts }) => {
       const str = this.composeText(texts);
       const position = this.calcTextsPosition(offscreenCanvas, str);
       let left = position.left;
@@ -102,7 +104,7 @@ class App extends Component {
     return { left, bottom };
   }
 
-  getTargetPoints = (data, intervel = 4) => {
+  getTargetPoints = (data, intervel = 3) => {
     const points = [];
     const rows = data.height;
     const cols = data.width;
@@ -112,8 +114,8 @@ class App extends Component {
         const alpha = data.data[(i * cols + j) * 4 + 3];
         if (alpha) {
           // j行i列对于坐标而言是(x, y)即(列,行)
-          const newX = j + (Math.random() - 0.5) * 70 - this.center.x;
-          const newY = this.center.y - (i + (Math.random() - 0.5) * 70);
+          const newX = j  - this.center.x;
+          const newY = this.center.y - i ;
           const pt = {
             x: newX, y: newY, z: 1
           };
@@ -168,7 +170,7 @@ class App extends Component {
   nextAction = () => {
     ++this.actionsIndex;
     this.tick = 0;
-    if (this.actionsIndex === Actions.length) {
+    if (this.actionsIndex === this.Actions.length) {
       window.cancelAnimationFrame(this.raf);
       this.actionsIndex = 0;
       this.geometrys = [];
@@ -181,7 +183,7 @@ class App extends Component {
     this.clear();
     this.renderParticles();
     this.raf = requestAnimationFrame(this.draw);
-    if (this.tick >= Actions[this.actionsIndex].lifeTime) {
+    if (this.tick >= this.Actions[this.actionsIndex].lifeTime) {
       this.nextAction();
     }
   }
@@ -194,6 +196,21 @@ class App extends Component {
   }
 
   render() {
+    this.props.allList.name?this.Actions = [
+      { lifeTime: 25, texts: [{ text: this.props.allList.name, color: color1 }] },
+      { lifeTime: 60, texts: [{ text: this.props.allList.detail, color: color1 }] },
+      { lifeTime: 60, texts: [{ text: this.props.allList.loveTime, color: color1 }] },
+      {
+        lifeTime: 120,
+        texts: [
+          { text: 'I', color: color1 },
+          { text: '❤', color: color2 },
+          { text: 'Y', color: color1 },
+          { text: 'O', color: color1 },
+          { text: 'U', color: color1 },
+        ]
+      },
+    ]:null
     return (
       <Canvas ref={this.initCanvas} />
     );

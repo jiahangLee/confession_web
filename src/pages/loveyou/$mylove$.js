@@ -29,6 +29,7 @@ class $mylove$ extends React.Component {
   }
   componentDidMount(){
     setInterval(this.changeTime, 1000);
+    setInterval(document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight*1.5, 2000);
   }
   render() {
 
@@ -82,12 +83,13 @@ class $mylove$ extends React.Component {
         {/*<h1>loveyou=>{p}</h1>*/}
         {/*<h1>{api.createConfession + "/" + p}</h1>*/}
         {/*<h1>{JSON.stringify(this.props.list)}</h1>*/}
+
+        {/*<h1>together=>{new Date(this.props.list.loveTime).getDate()}</h1>*/}
+        {/*<h1>now=>{new Date().getDate()}</h1>*/}
+<Comment allList = {this.props.list}/>
         <h3>love💘you=>{this.props.list.name}</h3>
         <h3>say to you=>{this.props.list.detail}</h3>
         <h3>together time=>{time}</h3>
-        {/*<h1>together=>{new Date(this.props.list.loveTime).getDate()}</h1>*/}
-        {/*<h1>now=>{new Date().getDate()}</h1>*/}
-<Comment/>
       </div>
 
     )
